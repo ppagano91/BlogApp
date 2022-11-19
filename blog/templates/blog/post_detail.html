@@ -1,4 +1,6 @@
-{% extends "blog/base.html" %} {% block content %}
+{% extends "blog/base.html" %}
+{% load bootstrap_icons %}
+{% block content %}
 <article class="media content-section">
   <img
     class="rounded-circle article-img"
@@ -10,6 +12,12 @@
       <small class="text-muted"
         >{{ object.date_posted|date:"H:i:s, d-F-Y" }}</small
       >
+      {% if object.author == user %}
+      <div>
+        <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'post-update' object.id %}">{% bs_icon 'pencil' %}Update</a>
+        <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'post-delete' object.id %}"> {% bs_icon 'trash' %} Delete</a>
+      </div>
+      {% endif %}
     </div>
     {% comment %}
     https://www.ciudadblogger.com/2013/04/valoracion-de-estrellas-por-parte-del-autor.html
