@@ -135,3 +135,11 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # It is the public url of the directory
 MEDIA_URL = '/media/'
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'desarrollo.ppagano91@gmail.com'
+# https://help.warmupinbox.com/en/articles/4934806-configure-for-google-workplace-with-two-factor-authentication-2fa
+EMAIL_HOST_PASSWORD='iwrjpsqxygqiclcs'
