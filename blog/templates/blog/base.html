@@ -1,4 +1,5 @@
 {% load static %}
+{% comment %} {% load bootstrap4 %} {% endcomment %}
 {% load bootstrap_icons %}
 <!DOCTYPE html>
 <html>
@@ -29,6 +30,9 @@
     <link rel="stylesheet" href="{% static 'bootstrap_icons/css/bootstrap_icons.css' %}">
 
     <link rel="stylesheet" type="text/css" href="{% static 'blog/main.css' %}" />
+
+    {% comment %} {% bootstrap_css %} {% endcomment %}
+
 
     <!-- las tres siguientes líneas son un truco para obtener elementos semánticos de HTML5 que funcionan en versiones de Internet Explorer antiguas -->
     <!--[if lt IE 9]>
@@ -105,9 +109,27 @@
 
     <!-- Y aquí está nuestro pie de página principal que se utiliza en todas las páginas de nuestro sitio web -->
 
-    <footer>
-      <p>©Copyright 2050 de nadie. Todos los derechos revertidos.</p>
-    </footer>
+    <!-- Footer -->
+<footer class="navbar navbar-expand-md navbar-dark bg-steel">
+  <div class="container d-flex flex-column justify-content-center">
+    <div class="row">
+      <div class="links col-sm-12 d-flex justify-content-center w-100 m-1">
+              <a href="#" style="margin: 5px">{% bs_icon 'google' size='25px' color='red' %}</a>
+              <a href="#" style="margin: 5px">{% bs_icon 'whatsapp' size='25px' color='green' %}</a>
+              <a href="#" style="margin: 5px">{% bs_icon 'instagram' size='25px' color='purple' %}</a>
+              <a href="#" style="margin: 5px">{% bs_icon 'facebook' size='25px' color='blue' %}</a>
+              <a href="#" style="margin: 5px">{% bs_icon 'github' size='25px' color='black' %}</a>
+
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 d-flex justify-content-center w-100 m-1">
+          <p style="color: white"><strong>Copyright © 2017. Patricio Pagano</strong></p>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- Footer -->
     <script
       src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
       integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
