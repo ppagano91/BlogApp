@@ -8,9 +8,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     {% if title %}
-    <title>Blog - {{title}}</title>
+    <title>Blog App - {{title}}</title>
     {% else %}
-    <title>Blog</title>
+    <title>Blog App</title>
     {% endif %}
     <link
       href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Sonsie+One"
@@ -30,6 +30,8 @@
     <link rel="stylesheet" href="{% static 'bootstrap_icons/css/bootstrap_icons.css' %}">
 
     <link rel="stylesheet" type="text/css" href="{% static 'blog/main.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'blog/footer.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'blog/reset.css' %}" />
 
     {% comment %} {% bootstrap_css %} {% endcomment %}
 
@@ -44,7 +46,7 @@
     <header class="site-header">
       <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
         <div class="container">
-          <a class="navbar-brand mr-4" href="{% url 'blog-home' %}">Django Blog</a>
+          <a class="navbar-brand mr-4" href="{% url 'blog-home' %}">Blog App</a>
           <button
             class="navbar-toggler"
             type="button"
@@ -60,11 +62,12 @@
             <div class="navbar-nav mr-auto">
               <a class="nav-item nav-link" href="{% url 'blog-home' %}">Home</a>
               <a class="nav-item nav-link" href="{% url 'blog-about' %}">About</a>
+              <a class="nav-item nav-link" href="{% url 'blog-contact' %}">Contact</a>
             </div>
             <!-- Navbar Right Side -->
             <div class="navbar-nav">
               {% if user.is_authenticated %}
-              <a class="nav-item nav-link" href="{% url 'post-create' %}">{% bs_icon 'plus' %} New Post</a>
+                <a class="nav-item nav-link" href="{% url 'post-create' %}">{% bs_icon 'plus' %} New Post</a>
                 <a class="nav-item nav-link" href="{% url 'profile' %}">Profile</a>
                 <a class="nav-item nav-link" href="{% url 'logout' %}">Logout</a>
 
@@ -81,7 +84,11 @@
     <!-- Aquí está el contenido principal de nuestra página -->
     <main role="main" class="container">
   <div class="row">
-    <div class="col-md-8">
+    {% if user.is_authenticated %}
+      <div class="col-md-8">
+    {% else %}
+      <div class="col-md-12">
+    {% endif %}
       {% if messages %}
         {% for message in messages %}
         <div class="alert alert-{{message.tags}}">
@@ -91,29 +98,30 @@
       {% endif %}
       {% block content %}{% endblock %}
     </div>
+    {% if user.is_authenticated %}
     <div class="col-md-4">
       <div class="content-section">
-        <h3>Our Sidebar</h3>
-        <p class='text-muted'>You can put any information here you'd like.
+        <h3>{{user.username}}</h3>
+        <p class='text-muted'>Information about user.
           <ul class="list-group">
-            <li class="list-group-item list-group-item-light">Latest Posts</li>
-            <li class="list-group-item list-group-item-light">Announcements</li>
-            <li class="list-group-item list-group-item-light">Calendars</li>
-            <li class="list-group-item list-group-item-light">etc</li>
+            <li class="list-group-item list-group-item-light"><a href="{% url 'post-create' %}">New Post</a></li>
+            <li class="list-group-item list-group-item-light"><a href="{% url 'user-posts' user.username %}">Latest Posts</a></li>
+            <li class="list-group-item list-group-item-light"><a href="{% url 'profile' %}">Profile</a></li>
           </ul>
         </p>
       </div>
-    </div>
+    </div>    
+    {% endif %}
   </div>
 </main>
 
     <!-- Y aquí está nuestro pie de página principal que se utiliza en todas las páginas de nuestro sitio web -->
 
     <!-- Footer -->
-<footer class="navbar navbar-expand-md navbar-dark bg-steel">
-  <div class="container d-flex flex-column justify-content-center">
-    <div class="row">
-      <div class="links col-sm-12 d-flex justify-content-center w-100 m-1">
+    <footer role="footer" class="footer">
+      <div class="container d-flex flex-column justify-content-center">
+        <div class="row">
+          <div class="links col-sm-12 d-flex justify-content-center w-100 m-1">
               <a href="#" style="margin: 5px">{% bs_icon 'google' size='25px' color='red' %}</a>
               <a href="#" style="margin: 5px">{% bs_icon 'whatsapp' size='25px' color='green' %}</a>
               <a href="#" style="margin: 5px">{% bs_icon 'instagram' size='25px' color='purple' %}</a>
@@ -123,8 +131,8 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-sm-12 d-flex justify-content-center w-100 m-1">
-          <p style="color: white"><strong>Copyright © 2017. Patricio Pagano</strong></p>
+      <div class="col-sm-12 d-flex justify-content-center w-100">
+          <p style="color: white"><strong>Copyright © 2022. Patricio Pagano</strong></p>
       </div>
     </div>
   </div>
