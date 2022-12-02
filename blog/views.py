@@ -7,6 +7,9 @@ from django.views.generic import ListView, DetailView, CreateView, UpdateView, D
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 
 from django.contrib.auth.models import User
+
+from django.core.mail import send_mail
+from django.conf import settings
 # from django.http import HttpResponse
 
 # Create your views here.
@@ -86,6 +89,23 @@ def about(request):
     return render(request, 'blog/about.html', {'title':'About'})
 
 def contact(request):
+    if request.method == "POST":
+
+        if request.POST["name"] != None:
+            subject = "Has recibido un mail de " + request.POST["name"]
+        else:
+            subject = "Has recibido un mail de Blog App"
+
+        message="Mensaje recibido:\n"+request.POST["message"]+"\nContacto: "+request.POST["email"]
+
+        email_from = settings.EMAIL_HOST_USER
+
+        recipient_list=["pagano.patricio@gmail.com"]
+
+        send_mail(subject, message, email_from, recipient_list )
+
+        return render(request, 'blog/mail_sent.html', {'title':'Contact'})
+
     return render(request, 'blog/contact.html', {'title':'Contact'})
 
 
