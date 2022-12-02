@@ -1,4 +1,10 @@
-{% extends "blog/base.html" %} {% block content %} {% for post in posts %}
+{% extends "blog/base.html" %}
+{% load static %}
+{% block styles %}
+  <link rel="stylesheet" type="text/css" href="{% static 'blog/home.css' %}" />
+{% endblock styles %}
+{% block content %}
+{% for post in posts %}
 <article class="media content-section">
     <img
       class="rounded-circle article-img"

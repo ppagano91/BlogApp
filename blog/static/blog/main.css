@@ -1,4 +1,4 @@
-body {
+ body {
   background: #fafafa;
   color: #333333;
   margin-top: 5rem;
@@ -34,7 +34,9 @@ ul {
   border: 1px solid #dddddd;
   border-radius: 3px;
   margin-bottom: 20px;
+  transition: all .5s ease-in-out;
 }
+
 
 .article-title {
   color: #444444;

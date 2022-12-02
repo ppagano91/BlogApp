@@ -32,6 +32,9 @@
     <link rel="stylesheet" type="text/css" href="{% static 'blog/main.css' %}" />
     <link rel="stylesheet" type="text/css" href="{% static 'blog/footer.css' %}" />
     <link rel="stylesheet" type="text/css" href="{% static 'blog/reset.css' %}" />
+    
+    {% block styles %}
+    {% endblock styles %}
 
     {% comment %} {% bootstrap_css %} {% endcomment %}
 
@@ -118,7 +121,7 @@
     <!-- Y aquí está nuestro pie de página principal que se utiliza en todas las páginas de nuestro sitio web -->
 
     <!-- Footer -->
-    <footer role="footer" class="footer">
+    <footer role="footer" class="footer mt-5">
       <div class="container d-flex flex-column justify-content-center">
         <div class="row">
           <div class="links col-sm-12 d-flex justify-content-center w-100 m-1">
