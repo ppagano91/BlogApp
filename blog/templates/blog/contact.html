@@ -1,8 +1,13 @@
 {% extends "blog/base.html" %}
-<!-- Aquí empieza el encabezado principal que se mantendrá en todas las páginas del sitio web -->
+{% load static %}
+{% block styles %}
+  <link rel="stylesheet" type="text/css" href="{% static 'blog/contact.css' %}" />
+{% endblock styles %}
 {% block content %}
 {% comment %} <h2>Contact</h2> {% endcomment %}
-<div class="container m-5">
+<div class="container">
+  <div class="hero-image">
+  </div>
   <p
     style="
       text-align: center;
@@ -11,10 +16,10 @@
       padding-top: 30px;
     "
   >
-    CONTACT US
+    CONTACT FORM
   </p>
 
-  <form action="/contact/" method="POST">
+  <form action="/contact/" method="POST" class="contact-form">
     {% csrf_token %}
 
     <div class="form-group">

@@ -1,9 +1,14 @@
 {% extends "blog/base.html" %}
-<!-- Aquí empieza el encabezado principal que se mantendrá en todas las páginas del sitio web -->
+{% load static %}
+{% block styles %}
+  <link rel="stylesheet" type="text/css" href="{% static 'blog/aboutus.css' %}" />
+{% endblock styles %}
 {% block content %}
 <div class="container">
-  <h2>ABOUT US</h2>
-  <p>
+  <div class="hero-image">
+  </div>
+  {% comment %} <h2>ABOUT US</h2> {% endcomment %}
+  <p class="mt-5">
     Welcome to Blog App, this blog is made with Django, visit
     <a
       href="https://github.com/ppagano91/Full-Featured-Web-App-Django"
@@ -12,7 +17,7 @@
     >
     to learn how we made it or clone the repository.
   </p>
-  <p>
+  <p class="mb-5">
     We hope you enjoy the content of the Blog. If you have any questions or
     comments, please don't hesitate to
     <a href="{% url 'blog-contact' %}">contact us</a>
