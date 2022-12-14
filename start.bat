@@ -1,0 +1,1 @@
+start cmd /k "cd venv/Scripts && activate && cd../.. && py manage.py runserver"
