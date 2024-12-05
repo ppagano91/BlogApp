@@ -1,2 +1,2 @@
-ppagano91
-adm007bb
+username=ppagano91
+password=adm007bb
