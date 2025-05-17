@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'django_bootstrap_icons',
     'bootstrap4',
+    'crispy_bootstrap4'
 ]
 
 MIDDLEWARE = [
@@ -124,12 +125,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
-
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap4"
 CRISPY_TEMPLATE_PACK='bootstrap4'
 
 LOGIN_REDIRECT_URL='blog-home'
 LOGIN_URL = 'login'
-
 
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # It is the default path to a directory where django store uploaded files
