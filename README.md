@@ -31,16 +31,5 @@ EMAIL_USER=tu_correo@gmail.com
 EMAIL_HOST_PASSWORD=la_contraseña_de_aplicación_generada
 ```
 
-## 🔐 Cómo generar la `SECRET_KEY`
-### ✅ ¿Cómo generar una nueva SECRET_KEY?
-Opción recomendada (desde consola):
-```bash
-python -c "from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())"
-```
-
-### 🗝️ Guardarla en tu .env:
-```.env
-SECRET_KEY=k+v$3z!61x)v6&$51w4bka=ap=ge9!7m(2j!8pzj*zwhz1r&$q
-```
 ## Créditos
 - https://www.youtube.com/playlist?list=PL-osiE80TeTtoQCKZ03TU5fNfx2UY6U4p
